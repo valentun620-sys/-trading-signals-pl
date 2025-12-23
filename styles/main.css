@@ -1,0 +1,190 @@
+/* =========================
+   Reset & Base
+========================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; font-family: 'Inter', Arial, sans-serif; background: #0b0f1a; color: #fff; overflow-x: hidden; }
+
+.app-wrapper {
+    min-height: 100vh;
+    background: url('../images/background.jpg') no-repeat center/cover;
+    background-attachment: fixed;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   Header & Flag Fix (ВАЖЛИВО)
+========================= */
+.header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; position: relative; z-index: 100; }
+.logo { height: 26px; width: auto; }
+
+.vip-button-wrapper { display: flex; align-items: center; gap: 12px; }
+
+/* ФІКС ВЕЛИЧЕЗНОГО ПРАПОРА */
+.lang-flag {
+    width: 24px !important; 
+    height: 24px !important;
+    min-width: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 8px 12px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.lang-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 160px;
+    background: #1c2532;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    list-style: none;
+    display: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+.lang-menu.open { display: block; }
+.lang-menu li { 
+    padding: 12px; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    cursor: pointer; 
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.lang-menu li:last-child { border-bottom: none; }
+
+/* =========================
+   Main Layout
+========================= */
+.main { display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 20px; flex: 1; }
+.main-heading { text-align: center; margin-bottom: 5px; }
+.main-heading h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+.main-heading p { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+/* =========================
+   Glass Card
+========================= */
+.glass-card {
+    width: 100%; max-width: 400px;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px; padding: 20px;
+    display: flex; flex-direction: column; gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.field-block label { font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-bottom: 6px; display: block; }
+.field-block input {
+    width: 100%; padding: 14px; font-size: 15px; border-radius: 12px; color: #fff;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+.submit-btn {
+    margin-top: 10px; padding: 15px; font-size: 16px; border-radius: 14px; border: 0; font-weight: 700;
+    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: not-allowed; transition: 0.3s;
+}
+.submit-btn.active { background: #3ba3ff; color: #fff; cursor: pointer; box-shadow: 0 5px 20px rgba(59, 163, 255, 0.4); }
+
+/* =========================
+   Signal & Loader (ЦЕНТРУВАННЯ)
+========================= */
+.glass-signal {
+    width: 100%; max-width: 400px;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px; padding: 20px;
+}
+
+.signal-bottom { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding-top: 10px; }
+
+/* ФІКС ІКОНКИ ЗАВАНТАЖЕННЯ */
+.wave-loader {
+    width: 38px; height: 38px;
+    margin: 0 auto 20px auto !important; 
+    display: block;
+}
+
+.sig-analysis { display: none; width: 100%; }
+.sig-steps { list-style: none; display: grid; gap: 10px; width: 100%; }
+.sig-step { background: rgba(255,255,255,0.02); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+.sig-step b { font-size: 13px; color: #fff; display: block; margin-bottom: 2px; }
+.sig-step .sub { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+.sig-progress { height: 4px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-top: 15px; }
+.sig-progress .bar { height: 100%; background: #3ba3ff; transition: width 0.15s ease; }
+
+/* =========================
+   Result View
+========================= */
+.rg2-ribbon { width: 100%; padding: 14px; text-align: center; border-radius: 14px; font-weight: 900; font-size: 22px; margin-bottom: 15px; }
+.rg2-ribbon.buy { background: #2ecc71; box-shadow: 0 0 20px rgba(46,204,113,0.3); }
+.rg2-ribbon.sell { background: #e74c3c; box-shadow: 0 0 20px rgba(231,76,60,0.3); }
+
+.rg2-pair { font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 15px; }
+.rg2-counters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+.rg2-counter { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+.rg2-counter .v { font-size: 22px; font-weight: 800; color: #fff; }
+
+.rg2-list .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+.rg2-list .k { color: rgba(255,255,255,0.4); }
+
+.rg2-actions { display: flex; gap: 10px; margin-top: 20px; }
+.rg2-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff; font-weight: 600; cursor: pointer; }
+
+/* =========================
+   Popups & 3x3 Grid
+========================= */
+.ex-overlay, .cp-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
+}
+.ex, .cp { width: 100%; max-width: 360px; background: #1c2532; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+
+/* СІТКА ЧАСУ 3х3 */
+.ex-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 20px;
+}
+.ex-chip {
+    height: 48px; background: #111a24; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+    color: #fff; font-weight: 700; cursor: pointer; transition: 0.2s;
+}
+.ex-chip:hover { background: #3ba3ff; border-color: #3ba3ff; }
+
+/* Пошук */
+.cp-search { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cp-search input { width: 100%; padding: 12px; border-radius: 12px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: #fff; outline: none; }
+.cp-list { max-height: 400px; overflow-y: auto; }
+.cp-item { display: flex; justify-content: space-between; padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); cursor: pointer; }
+
+/* =========================
+   FAQ
+========================= */
+.faq-section { width: 100%; max-width: 400px; margin: 40px auto; }
+.faq-item { margin-bottom: 12px; background: rgba(255,255,255,0.03); border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+.faq-question { width: 100%; padding: 16px; background: none; border: none; color: #fff; display: flex; justify-content: space-between; cursor: pointer; font-weight: 600; }
+.faq-answer { padding: 0 16px 16px; font-size: 13px; color: rgba(255,255,255,0.5); display: none; line-height: 1.5; }
+.faq-item.open .faq-answer { display: block; }
+
+/* Hiding VIP */
+#vipBtn, #vipSheet, .vip-indicator { display: none !important; }
